@@ -80,7 +80,7 @@ class _NavbarState extends State<Navbar> {
                   label: 'Order Now',
                   onTap: () => showToast(context,
                       title: 'Online Ordering Coming Soon!',
-                      description: 'Call us at +1 (555) 123-4567 to place your order now.')),
+                      description: 'Call us at 76767676 to place your order now.')),
             ],
           ),
           if (!isWide && isOpen)

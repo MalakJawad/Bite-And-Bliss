@@ -27,6 +27,9 @@ flutter:
   uses-material-design: true
 
   assets:
+    # BASE IMAGES
+    - assets/
+
     # HERO SECTION
     - assets/hero-burger.jpg
 
@@ -36,13 +39,47 @@ flutter:
     - assets/drinks.jpg
     - assets/dessert.jpg
 
-    # GALLERY SECTION (LIGHTBOX)
+    # APPETIZERS
+    - assets/fries.jpg
+    - assets/wedges.jpg
+    - assets/nuggets.jpeg
+    - assets/sticks.jpg
+    - assets/wings.jpg
+
+    # PIZZA & MAINS
+    - assets/plain.jpg
+    - assets/alfredo.jpg
+    - assets/pep.jpg
+    - assets/ranch.jpg
+    - assets/bbq.png
+    - assets/vegi.jpg
+    - assets/turkey.png
+    - assets/briskit.jpg
+    - assets/truffle.png
+    - assets/alfredopasta.jpg
+    - assets/pomodoro.jpg
+    - assets/swiss.png
+    - assets/leb.jpg
+    - assets/buffalo.jpg
+    - assets/smashedburger.jpg    
+
+    # DRINKS
+    - assets/orange.jpg
+    - assets/mango.jpg
+    - assets/pineapple.jpg
+    - assets/lemonade.jpg
+    - assets/minted.jpg
+    - assets/cocktail.png
+
+    # DESSERTS
+    - assets/choco.jpg
+    - assets/tiramisu.png
+    - assets/caramel.png
+    - assets/cheesecake.jpg
+    - assets/pudding.jpg
+
+    # GALLERY
     - assets/gallery-interior.jpg
     - assets/gallery-pasta.jpg
     - assets/gallery-chef.jpg
     - assets/gallery-salad.jpg
-
-    # ABOUT / TESTIMONIALS (optional)
-    # - assets/about.jpg
-    # - assets/testimonial1.jpg
-    # - assets/testimonial2.jpg
