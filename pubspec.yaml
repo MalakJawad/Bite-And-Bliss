@@ -1,27 +1,48 @@
-name: bite_and_bliss
-description: Bite & Bliss — Flutter portfolio site conversion
+name: bite_and_bliss_mobile
+description: A Flutter mobile app UI converted from your React project.
 publish_to: "none"
-version: 0.0.1
+
+version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_layout_grid: ^2.0.0
-  google_fonts: ^5.0.0
+
+  # UI & Fonts
+  google_fonts: ^7.0.0
+
+  # (Optional) Add more packages later if you want advanced features
+  # flutter_staggered_grid_view: ^0.7.0
+  # flutter_animate: ^4.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
+
   assets:
+    # HERO SECTION
     - assets/hero-burger.jpg
+
+    # MENU SECTION
     - assets/appetizers.jpg
     - assets/pizza.jpg
     - assets/drinks.jpg
     - assets/dessert.jpg
+
+    # GALLERY SECTION (LIGHTBOX)
+    - assets/gallery-interior.jpg
+    - assets/gallery-pasta.jpg
+    - assets/gallery-chef.jpg
+    - assets/gallery-salad.jpg
+
+    # ABOUT / TESTIMONIALS (optional)
+    # - assets/about.jpg
+    # - assets/testimonial1.jpg
+    # - assets/testimonial2.jpg
