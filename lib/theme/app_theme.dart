@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFFEF6E5E); 
+  static const Color primary = Color(0xFFEF6E5E);
   static const Color primaryForeground = Color(0xFFFFFFFF);
   static const Color foreground = Color(0xFF0F1724);
   static const Color background = Color(0xFFF8FAFC);
@@ -37,6 +37,8 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
+          shadowColor: AppColors.primary.withValues(alpha: 0.25),
+          elevation: 4,
         ),
       ),
     );

@@ -21,9 +21,11 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     final bg = outline ? Colors.transparent : AppColors.primary;
     final fg = outline ? AppColors.foreground : Colors.white;
+
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         height: height ?? 48,
         width: width,
         padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -42,7 +44,8 @@ class Button extends StatelessWidget {
                 ],
         ),
         child: Center(
-          child: Text(label, style: TextStyle(color: fg, fontWeight: FontWeight.w600)),
+          child: Text(label,
+              style: TextStyle(color: fg, fontWeight: FontWeight.w600, fontSize: 14)),
         ),
       ),
     );

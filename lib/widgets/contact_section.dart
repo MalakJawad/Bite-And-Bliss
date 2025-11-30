@@ -36,17 +36,20 @@ class _ContactSectionState extends State<ContactSection> {
 
   @override
   Widget build(BuildContext context) {
+    final isWide = MediaQuery.of(context).size.width > 600;
+
     return Container(
       color: AppColors.secondary,
       padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 18),
       child: Column(
         children: [
-         const Text('Get in Touch', style: TextStyle(color: AppColors.primary)),
+          const Text('Get in Touch', style: TextStyle(color: AppColors.primary)),
           const SizedBox(height: 8),
-          Text(
-            'Visit Us Today',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-          ),
+          Text('Visit Us Today',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 12),
           Form(
             key: _formKey,
@@ -57,23 +60,25 @@ class _ContactSectionState extends State<ContactSection> {
                   runSpacing: 12,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width > 600 ? 280 : double.infinity,
+                      width: isWide ? 280 : double.infinity,
                       child: TextFormField(
                         decoration: const InputDecoration(labelText: 'Name'),
-                        validator: (v) => (v == null || v.isEmpty) ? 'Required' : null,
+                        validator: (v) =>
+                            (v == null || v.isEmpty) ? 'Required' : null,
                         onChanged: (v) => name = v,
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width > 600 ? 280 : double.infinity,
+                      width: isWide ? 280 : double.infinity,
                       child: TextFormField(
                         decoration: const InputDecoration(labelText: 'Phone'),
-                        validator: (v) => (v == null || v.isEmpty) ? 'Required' : null,
+                        validator: (v) =>
+                            (v == null || v.isEmpty) ? 'Required' : null,
                         onChanged: (v) => phone = v,
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width > 600 ? 280 : double.infinity,
+                      width: isWide ? 280 : double.infinity,
                       child: TextFormField(
                         decoration: const InputDecoration(labelText: 'Date'),
                         readOnly: true,
@@ -86,14 +91,15 @@ class _ContactSectionState extends State<ContactSection> {
                             lastDate: DateTime.now().add(const Duration(days: 365)),
                           );
                           if (picked != null) {
-                            setState(() => date = picked.toIso8601String().split('T').first);
+                            setState(
+                                () => date = picked.toIso8601String().split('T').first);
                           }
                         },
                         validator: (_) => (date.isEmpty) ? 'Required' : null,
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width > 600 ? 280 : double.infinity,
+                      width: isWide ? 280 : double.infinity,
                       child: DropdownButtonFormField<String>(
                         initialValue: guests,
                         decoration: const InputDecoration(labelText: 'Guests'),

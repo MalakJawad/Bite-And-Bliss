@@ -3,8 +3,12 @@ import '../theme/app_theme.dart';
 import 'button.dart';
 import 'toast.dart';
 
+typedef NavLinkCallback = void Function(String id);
+
 class Navbar extends StatefulWidget {
-  const Navbar({super.key});
+  final NavLinkCallback? onLinkTap;
+
+  const Navbar({super.key, this.onLinkTap});
 
   @override
   State<Navbar> createState() => _NavbarState();
@@ -12,6 +16,7 @@ class Navbar extends StatefulWidget {
 
 class _NavbarState extends State<Navbar> {
   bool isOpen = false;
+
   final navLinks = [
     {'label': 'Home', 'id': 'home'},
     {'label': 'Menu', 'id': 'menu'},
@@ -20,18 +25,21 @@ class _NavbarState extends State<Navbar> {
     {'label': 'Contact', 'id': 'contact'},
   ];
 
-  void handleOrderNow() {
-    showToast(context, title: 'Online Ordering Coming Soon!', description: 'Call us at +1 (555) 123-4567 to place your order now.');
-  }
-
   void toggleMenu() => setState(() => isOpen = !isOpen);
+
+  void _handleNav(String id) {
+    setState(() => isOpen = false);
+    if (widget.onLinkTap != null) widget.onLinkTap!(id);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final isWide = MediaQuery.of(context).size.width > 800;
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: BoxDecoration(
-        color: AppColors.background.withValues(alpha: 0.98),
+        color: AppColors.foreground.withValues(alpha: 0.98),
         border: const Border(bottom: BorderSide(color: AppColors.border)),
       ),
       child: Column(
@@ -40,52 +48,51 @@ class _NavbarState extends State<Navbar> {
             children: [
               // Logo
               GestureDetector(
-                onTap: () => Scrollable.ensureVisible(
-                  context,
-                  duration: const Duration(milliseconds: 300),
-                ),
+                onTap: () => _handleNav('home'),
                 child: RichText(
                   text: const TextSpan(
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     children: [
-                      TextSpan(text: 'Bite ', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.foreground)),
-                      TextSpan(text: '&', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.primary)),
-                      TextSpan(text: ' Bliss', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.foreground)),
+                      TextSpan(text: 'Bite ', style: TextStyle(color: Color.fromARGB(255, 148, 163, 184))),
+                      TextSpan(text: '&', style: TextStyle(color: AppColors.primary)),
+                      TextSpan(text: ' Bliss', style: TextStyle(color: Color.fromARGB(255, 148, 163, 184))),
                     ],
                   ),
                 ),
               ),
               const Spacer(),
-              // Desktop links (hidden on small widths; but simple)
-              Row(
-                children: navLinks.map((link) {
-                  return TextButton(
-                    onPressed: () {
-                      showToast(context, title: 'Navigate', description: 'Jump to ${link['label']} (anchor scrolling not implemented)');
-                    },
-                    child: Text(link['label']!, style: const TextStyle(color: AppColors.muted)),
-                  );
-                }).toList(),
-              ),
-              const SizedBox(width: 8),
-              Button(label: 'Order Now', onTap: handleOrderNow),
-              const SizedBox(width: 8),
-              IconButton(
-                icon: Icon(isOpen ? Icons.close : Icons.menu, color: AppColors.foreground),
-                onPressed: toggleMenu,
-              ),
+              if (isWide)
+                Row(
+                  children: navLinks
+                      .map((link) => TextButton(
+                            onPressed: () => _handleNav(link['id']!),
+                            child: Text(link['label']!, style: const TextStyle(color: AppColors.muted)),
+                          ))
+                      .toList(),
+                ),
+              if (!isWide)
+                IconButton(
+                  icon: Icon(isOpen ? Icons.close : Icons.menu, color: AppColors.foreground),
+                  onPressed: toggleMenu,
+                ),
+              const SizedBox(width: 12),
+              Button(
+                  label: 'Order Now',
+                  onTap: () => showToast(context,
+                      title: 'Online Ordering Coming Soon!',
+                      description: 'Call us at +1 (555) 123-4567 to place your order now.')),
             ],
           ),
-          if (isOpen)
+          if (!isWide && isOpen)
             Column(
-              children: navLinks.map((link) {
-                return ListTile(
-                  title: Text(link['label']!, style: const TextStyle(color: AppColors.foreground)),
-                  onTap: () {
-                    setState(() => isOpen = false);
-                    showToast(context, title: 'Navigate', description: 'Jump to ${link['label']} (anchor scrolling not implemented)');
-                  },
-                );
-              }).toList(),
+              children: navLinks
+                  .map(
+                    (link) => ListTile(
+                      title: Text(link['label']!, style: const TextStyle(color: AppColors.foreground)),
+                      onTap: () => _handleNav(link['id']!),
+                    ),
+                  )
+                  .toList(),
             ),
         ],
       ),
