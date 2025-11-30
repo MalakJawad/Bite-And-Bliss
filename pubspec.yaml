@@ -1,0 +1,27 @@
+name: bite_and_bliss
+description: Bite & Bliss — Flutter portfolio site conversion
+publish_to: "none"
+version: 0.0.1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_layout_grid: ^2.0.0
+  google_fonts: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/hero-burger.jpg
+    - assets/appetizers.jpg
+    - assets/pizza.jpg
+    - assets/drinks.jpg
+    - assets/dessert.jpg
