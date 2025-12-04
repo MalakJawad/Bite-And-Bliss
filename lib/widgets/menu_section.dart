@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
+
 import 'menu_detail_page.dart';
 
 class MenuSection extends StatelessWidget {
@@ -54,44 +56,16 @@ class MenuSection extends StatelessWidget {
           {'name': 'Margherita Pizza', 'image': 'assets/plain.jpg', 'price': '\$10'},
           {'name': 'Chicken Alfredo Pizza', 'image': 'assets/alfredo.jpg', 'price': '\$14'},
           {'name': 'Pepperoni Pizza', 'image': 'assets/pep.jpg', 'price': '\$12'},
-          {'name': 'Chicken Ranch Pizza', 'desc': '', 'image': 'assets/ranch.jpg', 'price': '\$12'},
-          {'name': 'Smocked BBQ Chicken Pizza', 'desc': '', 'image': 'assets/bbq.png', 'price': '\$13'},
-          {'name': 'Vegetarian Pizza', 'desc': '', 'image': 'assets/vegi.jpg', 'price': '\$11'},
-          {'name': 'Lebanese Turkey Pizza', 'desc': '', 'image': 'assets/turkey.png', 'price': '\$12'},
-          {'name': 'Smocked Brisket Pizza', 'desc': '', 'image': 'assets/briskit.jpg', 'price': '\$14'},
-          {'name': 'Truffle Pizza', 'desc': '', 'image': 'assets/truffle.png', 'price': '\$13'},
-          {'name': 'Chicken Alfredo Pasta', 'desc': '', 'image': 'assets/alfredopasta.jpg', 'price': '\$14'},
-          {'name': 'Spaghetti Pomodoro', 'desc': '', 'image': 'assets/pomodoro.jpg', 'price': '\$8'},
-          {'name': 'Swiss Mushroom Pasta', 'desc': '', 'image': 'assets/swiss.png', 'price': '\$12'},
-          {'name': 'Lebanese Burger', 'desc': '', 'image': 'assets/leb.jpg', 'price': '\$5'},
-          {'name': 'Buffalo Burger', 'desc': '', 'image': 'assets/buffalo.jpg', 'price': '\$6'},
-          {'name': 'Smashed Burger', 'desc': '', 'image': 'assets/smashedburger.jpg', 'price': '\$7'},
+          {'name': 'Chicken Ranch Pizza', 'image': 'assets/ranch.jpg', 'price': '\$12'},
+       {'name': 'Smocked BBQ Chicken Pizza', 'desc': '', 'image': 'assets/bbq.png', 'price': '\$13'}, {'name': 'Vegetarian Pizza', 'desc': '', 'image': 'assets/vegi.jpg', 'price': '\$11'}, {'name': 'Lebanese Turkey Pizza', 'desc': '', 'image': 'assets/turkey.png', 'price': '\$12'}, {'name': 'Smocked Brisket Pizza', 'desc': '', 'image': 'assets/briskit.jpg', 'price': '\$14'}, {'name': 'Truffle Pizza', 'desc': '', 'image': 'assets/truffle.png', 'price': '\$13'}, {'name': 'Chicken Alfredo Pasta', 'desc': '', 'image': 'assets/alfredopasta.jpg', 'price': '\$14'}, {'name': 'Spaghetti Pomodoro', 'desc': '', 'image': 'assets/pomodoro.jpg', 'price': '\$8'}, {'name': 'Swiss Mushroom Pasta', 'desc': '', 'image': 'assets/swiss.png', 'price': '\$12'}, {'name': 'Lebanese Burger', 'desc': '', 'image': 'assets/leb.jpg', 'price': '\$5'}, {'name': 'Buffalo Burger', 'desc': '', 'image': 'assets/buffalo.jpg', 'price': '\$6'}, {'name': 'Smashed Burger', 'desc': '', 'image': 'assets/smashedburger.jpg', 'price': '\$7'},
         ];
       case 'Drinks':
         return [
-          {'name': 'Pepsi', 'desc': '1.25', 'image': null, 'price': '\$2'},
-          {'name': 'Miranda', 'desc': '1.25', 'image': null, 'price': '\$2'},
-          {'name': '7 Up', 'desc': '1.25', 'image': null, 'price': '\$2'},
-          {'name': 'Diet', 'desc': '1.25', 'image': null, 'price': '\$2'},
-          {'name': 'Water Small', 'desc': '', 'image': null, 'price': '\$0.5'},
-          {'name': 'Water Large', 'desc': '', 'image': null, 'price': '\$1'},
-          {'name': 'Ice Tea Peach', 'desc': '', 'image': null, 'price': '\$1.5'},
-          {'name': 'Ice Tea Lemon', 'desc': '', 'image': null, 'price': '\$1.5'},
-          {'name': 'Ice Tea Zero', 'desc': '', 'image': null, 'price': '\$1.5'},
-          {'name': 'Orange Fresh Juice', 'desc': '', 'image': 'assets/orange.jpg', 'price': '\$4'},
-          {'name': 'Mango Fresh Juice', 'desc': '', 'image': 'assets/mango.jpg', 'price': '\$5'},
-          {'name': 'Pineapple Fresh Juice', 'desc': '', 'image': 'assets/pineapple.jpg', 'price': '\$5.5'},
-          {'name': 'Lemonade Fresh Juice', 'desc': '', 'image': 'assets/lemonade.jpg', 'price': '\$3.5'},
-          {'name': 'Minted Lemonade Fresh Juice', 'desc': '', 'image': 'assets/minted.jpg', 'price': '\$4'},
-          {'name': 'Cocktail Juice', 'desc': '', 'image': 'assets/cocktail.png', 'price': '\$8'},
+          {'name': 'Pepsi', 'desc': '1.25', 'image': null, 'price': '\$2'}, {'name': 'Miranda', 'desc': '1.25', 'image': null, 'price': '\$2'}, {'name': '7 Up', 'desc': '1.25', 'image': null, 'price': '\$2'}, {'name': 'Diet', 'desc': '1.25', 'image': null, 'price': '\$2'}, {'name': 'Water Small', 'desc': '', 'image': null, 'price': '\$0.5'}, {'name': 'Water Large', 'desc': '', 'image': null, 'price': '\$1'}, {'name': 'Ice Tea Peach', 'desc': '', 'image': null, 'price': '\$1.5'}, {'name': 'Ice Tea Lemon', 'desc': '', 'image': null, 'price': '\$1.5'}, {'name': 'Ice Tea Zero', 'desc': '', 'image': null, 'price': '\$1.5'}, {'name': 'Orange Fresh Juice', 'desc': '', 'image': 'assets/orange.jpg', 'price': '\$4'}, {'name': 'Mango Fresh Juice', 'desc': '', 'image': 'assets/mango.jpg', 'price': '\$5'}, {'name': 'Pineapple Fresh Juice', 'desc': '', 'image': 'assets/pineapple.jpg', 'price': '\$5.5'}, {'name': 'Lemonade Fresh Juice', 'desc': '', 'image': 'assets/lemonade.jpg', 'price': '\$3.5'}, {'name': 'Minted Lemonade Fresh Juice', 'desc': '', 'image': 'assets/minted.jpg', 'price': '\$4'}, {'name': 'Cocktail Juice', 'desc': '', 'image': 'assets/cocktail.png', 'price': '\$8'},
         ];
       case 'Desserts':
         return [
-          {'name': 'Chocolate Cake', 'image': 'assets/choco.jpg', 'price': '\$5'},
-          {'name': 'Tiramisu', 'image': 'assets/tiramisu.png', 'price': '\$6'},
-          {'name': 'Caramel Cake', 'desc': '', 'image': 'assets/caramel.png', 'price': '\$6'},
-          {'name': 'Cheese Cake', 'desc': '', 'image': 'assets/cheesecake.jpg', 'price': '\$5.5'},
-          {'name': 'Brownie Pudding', 'desc': '', 'image': 'assets/pudding.jpg', 'price': '\$6.5'},
+          {'name': 'Chocolate Cake', 'image': 'assets/choco.jpg', 'price': '\$5'}, {'name': 'Tiramisu', 'image': 'assets/tiramisu.png', 'price': '\$6'}, {'name': 'Caramel Cake', 'desc': '', 'image': 'assets/caramel.png', 'price': '\$6'}, {'name': 'Cheese Cake', 'desc': '', 'image': 'assets/cheesecake.jpg', 'price': '\$5.5'}, {'name': 'Brownie Pudding', 'desc': '', 'image': 'assets/pudding.jpg', 'price': '\$6.5'},
         ];
       default:
         return [];
@@ -119,7 +93,7 @@ class MenuSection extends StatelessWidget {
           itemCount: categories.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 1.5, // slightly taller for full image coverage
+            childAspectRatio: 1.5,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
           ),
@@ -131,7 +105,6 @@ class MenuSection extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: Stack(
                   children: [
-                    // Full background image
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: Image.asset(
@@ -141,14 +114,12 @@ class MenuSection extends StatelessWidget {
                         height: double.infinity,
                       ),
                     ),
-                    // Dark overlay for readability
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: Colors.black.withValues(alpha:0.3),
                       ),
                     ),
-                    // Text content
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(

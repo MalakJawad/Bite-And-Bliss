@@ -31,10 +31,8 @@ class _NavbarState extends State<Navbar> {
 
   void _handleNav(String id) {
     setState(() => isOpen = false);
-    if (widget.onLinkTap != null) widget.onLinkTap!(id);
+    widget.onLinkTap?.call(id);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,73 +40,115 @@ class _NavbarState extends State<Navbar> {
     final cart = context.watch<CartProvider>();
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       decoration: BoxDecoration(
         color: AppColors.foreground.withValues(alpha: 0.98),
-        border: const Border(bottom: BorderSide(color: AppColors.border)),
+        border: const Border(
+          bottom: BorderSide(color: AppColors.border, width: 0.8),
+        ),
       ),
       child: Column(
         children: [
           Row(
             children: [
-              // Logo:
+              // Logo
               GestureDetector(
                 onTap: () => _handleNav('home'),
                 child: RichText(
                   text: const TextSpan(
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                     children: [
-                      TextSpan(text: 'Bite ', style: TextStyle(color: Color.fromARGB(255, 148, 163, 184))),
-                      TextSpan(text: '&', style: TextStyle(color: Color.fromARGB(255, 239,110,94))), 
-                      TextSpan(text: ' Bliss', style: TextStyle(color: Color.fromARGB(255, 148, 163, 184))),
+                      TextSpan(
+                        text: 'Bite ',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 148, 163, 184),
+                        ),
+                      ),
+                      TextSpan(
+                        text: '&',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 239, 110, 94),
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' Bliss',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 148, 163, 184),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
+
               const Spacer(),
+
+              // Desktop Navigation Links: 
               if (isWide)
                 Row(
                   children: navLinks
-                      .map((link) => TextButton(
+                      .map(
+                        (link) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: TextButton(
                             onPressed: () => _handleNav(link['id']!),
-                            child: Text(link['label']!, style: const TextStyle(color: Color.fromARGB(255, 217, 222, 230))),
-                          ))
+                            child: Text(
+                              link['label']!,
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 217, 222, 230),
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
                       .toList(),
                 ),
+
               if (!isWide)
                 IconButton(
-                  icon: Icon(isOpen ? Icons.close : Icons.menu, color: const Color.fromARGB(255, 239,110,94)),
+                  icon: Icon(
+                    isOpen ? Icons.close : Icons.menu,
+                    color: const Color.fromARGB(255, 239, 110, 94),
+                  ),
                   onPressed: toggleMenu,
                 ),
+
               const SizedBox(width: 12),
 
-              // Cart icon:
               Stack(
                 children: [
                   IconButton(
                     icon: const Icon(
                       Icons.shopping_cart_outlined,
-                      color: Color.fromARGB(255, 239,110,94), 
+                      color: Color.fromARGB(255, 239, 110, 94),
                     ),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const CartPage()),
+                        MaterialPageRoute(
+                          builder: (_) => const CartPage(),
+                        ),
                       );
                     },
                   ),
                   if (cart.totalItems > 0)
                     Positioned(
-                      right: 6,
-                      top: 6,
+                      right: 4,
+                      top: 4,
                       child: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 148, 163, 184), 
+                          color: Color.fromARGB(255, 148, 163, 184),
                           shape: BoxShape.circle,
                         ),
                         child: Text(
-                          cart.totalItems > 99 ? '99+' : cart.totalItems.toString(),
+                          cart.totalItems > 99
+                              ? '99+'
+                              : cart.totalItems.toString(),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 11,
@@ -120,19 +160,25 @@ class _NavbarState extends State<Navbar> {
                 ],
               ),
 
-             Button(
-  label: 'Order Now',
-  onTap: () => _handleNav('menu'),
-),
-
+              Button(
+                label: 'Order Now',
+                onTap: () => _handleNav('menu'),
+              ),
             ],
           ),
+
           if (!isWide && isOpen)
             Column(
               children: navLinks
                   .map(
                     (link) => ListTile(
-                      title: Text(link['label']!, style: const TextStyle(color: Color.fromARGB(255, 239,110,94))),
+                      title: Text(
+                        link['label']!,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 239, 110, 94),
+                          fontSize: 16,
+                        ),
+                      ),
                       onTap: () => _handleNav(link['id']!),
                     ),
                   )

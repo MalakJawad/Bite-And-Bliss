@@ -19,7 +19,7 @@ class HeroSection extends StatelessWidget {
         ),
       ),
       child: Container(
-        color: Colors.black.withValues(alpha:0.4),
+        color: Colors.black.withValues(alpha:0.4), 
         padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 80),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -45,7 +45,7 @@ class HeroSection extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                 const SizedBox(
+                  const SizedBox(
                     width: 500,
                     child: Text(
                       "Discover the perfect blend of delightful bites and pure bliss crafted with passion and flavor.",
@@ -61,16 +61,20 @@ class HeroSection extends StatelessWidget {
                     children: [
                       Button(
                         label: "Explore Menu",
+                        color: AppColors.primary,
+                        textColor: Colors.white,
                         onTap: () => onNavigate?.call("menu"),
                       ),
                       const SizedBox(width: 14),
                       Button(
                         label: "Book a Table",
                         outline: true,
+                        textColor: Colors.red,
+                        outlineColor: Colors.red,
                         onTap: () => onNavigate?.call("contact"),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

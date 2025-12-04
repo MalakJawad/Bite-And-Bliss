@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
+import '../providers/cart_provider.dart';
 
 class MenuDetailPage extends StatelessWidget {
   final String category;
@@ -9,6 +11,8 @@ class MenuDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(category),
@@ -22,7 +26,7 @@ class MenuDetailPage extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
-            childAspectRatio: 1.2, // taller for full image effect
+            childAspectRatio: 1.2,
           ),
           itemBuilder: (context, index) {
             final item = items[index];
@@ -30,7 +34,6 @@ class MenuDetailPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Stack(
                 children: [
-                  // Full background image if exists
                   if (item['image'] != null)
                     Image.asset(
                       item['image']!,
@@ -39,16 +42,12 @@ class MenuDetailPage extends StatelessWidget {
                       height: double.infinity,
                     )
                   else
-                    Container(color: AppColors.card), // fallback color
-
-                  // Dark overlay for text readability
+                    Container(color: AppColors.card),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.black.withValues(alpha:0.3),
                     ),
                   ),
-
-                  // Text content at bottom
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Column(
@@ -79,6 +78,32 @@ class MenuDetailPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: AppColors.gold,
                           ),
+                        ),
+                        const SizedBox(height: 6),
+                        ElevatedButton(
+                          onPressed: () {
+                            final priceValue = double.tryParse(
+                                item['price']?.replaceAll('\$', '') ?? '0') ?? 0;
+
+                            cartProvider.addToCart(
+                              id: item['name']!, 
+                              name: item['name']!,
+                              description: item['desc'] ?? '',
+                              image: item['image'],
+                              price: priceValue,
+                            );
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('${item['name']} added to cart'),
+                                duration: const Duration(seconds: 1),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                          ),
+                          child: const Text('Order'),
                         ),
                       ],
                     ),
