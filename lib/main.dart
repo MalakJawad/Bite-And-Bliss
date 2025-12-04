@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'theme/app_theme.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
+import 'providers/cart_provider.dart';
+import 'theme/app_theme.dart';
 
 void main() {
-  runApp(const BiteAndBlissApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: const BiteAndBlissApp(),
+    ),
+  );
 }
 
 class BiteAndBlissApp extends StatelessWidget {
@@ -16,10 +23,6 @@ class BiteAndBlissApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme(),
       home: const HomePage(),
-      // Add simple scroll behavior for smooth mobile feel
-      scrollBehavior: const MaterialScrollBehavior().copyWith(
-        physics: const BouncingScrollPhysics(),
-      ),
     );
   }
 }
