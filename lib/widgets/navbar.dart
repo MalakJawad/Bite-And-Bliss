@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import 'button.dart';
-import 'toast.dart';
 import '../providers/cart_provider.dart';
 import '../pages/cart_page.dart';
 
@@ -121,14 +120,11 @@ class _NavbarState extends State<Navbar> {
                 ],
               ),
 
-              Button(
-                label: 'Order Now',
-                onTap: () => showToast(
-                  context,
-                  title: 'Online Ordering Coming Soon!',
-                  description: 'Call us at 76767676 to place your order now.',
-                ),
-              ),
+             Button(
+  label: 'Order Now',
+  onTap: () => _handleNav('menu'),
+),
+
             ],
           ),
           if (!isWide && isOpen)

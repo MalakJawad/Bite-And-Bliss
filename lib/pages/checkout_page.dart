@@ -12,12 +12,11 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  String paymentMethod = "card"; // card or cash
-  String deliveryMethod = "delivery"; // delivery or pickup
+  String paymentMethod = "card"; 
+  String deliveryMethod = "delivery"; 
   bool isProcessing = false;
   bool orderPlaced = false;
 
-  // Delivery address controllers
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _phoneController = TextEditingController();
@@ -30,10 +29,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Future<void> placeOrder(CartProvider cart) async {
     setState(() => isProcessing = true);
 
-    // Simulate processing delay
+   
     await Future.delayed(const Duration(seconds: 2));
 
-    if (!mounted) return; // << Guard context usage
+    if (!mounted) return; 
 
     setState(() {
       isProcessing = false;
@@ -133,7 +132,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Delivery Method
             Card(
               elevation: 2,
               child: Padding(
@@ -173,7 +171,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
             const SizedBox(height: 12),
 
-            // Delivery Address
             if (deliveryMethod == "delivery")
               Card(
                 elevation: 2,
@@ -248,7 +245,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             const SizedBox(height: 12),
 
-            // Payment Method
             Card(
               elevation: 2,
               child: Padding(
@@ -283,7 +279,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
             const SizedBox(height: 12),
 
-            // Order Summary
             Card(
               elevation: 2,
               child: Padding(
